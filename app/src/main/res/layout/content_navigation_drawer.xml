@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_navigation_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.pockinc.pockup.NavigationDrawerActivity"
+    tools:showIn="@layout/app_bar_navigation_drawer">
+
+
+
+    <ImageButton
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:srcCompat="@drawable/ic_snack_button"
+        android:id="@+id/snack_button"
+        android:layout_below="@+id/bar_button"
+        android:layout_alignStart="@+id/bar_button"
+        android:scaleType="fitXY"
+        android:onClick="sendMessage"
+        android:elevation="5dp" />
+
+    <ImageButton
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:srcCompat="@drawable/ic_food_button"
+        android:id="@+id/food_button"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/health_button"
+        android:layout_alignStart="@+id/health_button"
+        android:onClick="sendMessage"
+        android:elevation="5dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/ic_bar_button"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="17dp"
+        android:id="@+id/bar_button"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        android:contentDescription=""
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:onClick="sendMessage"
+        android:elevation="5dp" />
+
+    <ImageButton
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:srcCompat="@drawable/ic_health_button"
+        android:layout_marginStart="13dp"
+        android:id="@+id/health_button"
+        android:scaleType="fitCenter"
+        android:onClick="sendMessage"
+        android:layout_alignTop="@+id/bar_button"
+        android:layout_toEndOf="@+id/snack_button"
+        android:elevation="5dp" />
+
+    <ImageButton
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:srcCompat="@drawable/ic_camping_button"
+        android:id="@+id/camping_button"
+        android:scaleType="fitXY"
+        android:onClick="sendMessage"
+        android:elevation="5dp"
+        android:layout_below="@+id/snack_button"
+        android:layout_alignStart="@+id/snack_button" />
+
+
+</RelativeLayout>
