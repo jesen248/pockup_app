@@ -18,6 +18,8 @@ import android.view.MenuItem;
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public final static String EXTRA_MESSAGE = "com.pockinc.pockup.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +109,20 @@ public class NavigationDrawerActivity extends AppCompatActivity
         //Snackbar.make(view, getResources().getResourceName(view.getId()), Snackbar.LENGTH_LONG)
         //        .setAction("Action", null).show();
         Intent intent = new Intent(NavigationDrawerActivity.this, MapsActivity.class);
+
+        //int category_id  = 1;
+        int category_id = view.getId();
+        int id=1;
+        if(category_id == R.id.bar_button){
+            id = 1;
+        } else if(category_id == R.id.health_button){
+            id = 2;
+        } else if(category_id == R.id.snack_button){
+            id = 3;
+        }
+
+        //String message = String.valueOf(id);
+        intent.putExtra(EXTRA_MESSAGE,id);
         startActivity(intent);
     }
 

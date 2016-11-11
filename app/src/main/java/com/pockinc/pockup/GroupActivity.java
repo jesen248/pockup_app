@@ -23,9 +23,17 @@ import java.util.List;
 /*
 
 ADDED FROM THE JSON TUTORIAL
+
+CAN BE FOUND ON THIS PAGE
+
+http://www.androidhive.info/2012/01/android-json-parsing-tutorial/
+
+
+
  */
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -57,9 +65,8 @@ public class GroupActivity extends AppCompatActivity {
     private ListView lv;
 
     // URL to get contacts JSON
-    //private static String url = "http://api.androidhive.info/contacts/";
-    private static String url = "https://pockup.herokuapp.com/api/categories/1/groups";
-
+    private static String url = "https://pockup.herokuapp.com/api/categories/";
+    //on this url we need to add {category_number}/groups
 
     ArrayList<HashMap<String, String>> groupList;
 
@@ -67,6 +74,15 @@ public class GroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
+
+        Intent intent = getIntent();
+
+        int id = intent.getIntExtra(NavigationDrawerActivity.EXTRA_MESSAGE,0);
+        String message = String.valueOf(id);
+        //int id = Integer.parseInt(message);
+
+        url = "https://pockup.herokuapp.com/api/categories/" + message + "/groups";
+
 
         groupList = new ArrayList<>();
 

@@ -19,13 +19,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    public final static String EXTRA_MESSAGE = "com.pockinc.pockup.MESSAGE";
     private GoogleMap mMap;
-
+    private int category_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Category Map");
         setContentView(R.layout.category_activity_maps);
+
+
+        Intent intent = getIntent();
+        int id = intent.getIntExtra(NavigationDrawerActivity.EXTRA_MESSAGE,0);
+        category_id = id;
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -74,6 +81,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Snackbar.make(view, getResources().getResourceName(view.getId()), Snackbar.LENGTH_LONG)
         //        .setAction("Action", null).show();
         Intent intent = new Intent(MapsActivity.this, GroupActivity.class);
+
+
+
+        intent.putExtra(EXTRA_MESSAGE,category_id);
         startActivity(intent);
     }
 
