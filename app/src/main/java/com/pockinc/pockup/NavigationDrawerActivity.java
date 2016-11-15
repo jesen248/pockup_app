@@ -18,7 +18,6 @@ import android.view.MenuItem;
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public final static String EXTRA_MESSAGE = "com.pockinc.pockup.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +121,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         }
 
         //String message = String.valueOf(id);
-        intent.putExtra(EXTRA_MESSAGE,id);
+        intent.putExtra("category_id",id);
         startActivity(intent);
     }
 

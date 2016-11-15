@@ -77,7 +77,7 @@ public class GroupActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int id = intent.getIntExtra(NavigationDrawerActivity.EXTRA_MESSAGE,0);
+        int id = intent.getIntExtra("category_id",0);
         String message = String.valueOf(id);
         //int id = Integer.parseInt(message);
 
@@ -127,7 +127,7 @@ public class GroupActivity extends AppCompatActivity {
 
 
 
-                    // looping through All Contacts
+                    // looping through All groups
                     for (int i = 0; i < groups.length(); i++) {
                         JSONObject c = groups.getJSONObject(i);
 
