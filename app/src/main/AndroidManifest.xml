@@ -29,7 +29,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NavigationDrawerActivity"
+            android:name=".LoginActivity"
             android:label="Pockup"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -38,6 +38,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/app_name"
@@ -56,6 +58,9 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".GroupActivity"></activity>
+        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".NavigationDrawerActivity"></activity>
     </application>
 
 </manifest>

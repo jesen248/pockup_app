@@ -65,16 +65,5 @@
         android:layout_toEndOf="@+id/snack_button"
         android:elevation="5dp" />
 
-    <ImageButton
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        app:srcCompat="@drawable/ic_camping_button"
-        android:id="@+id/camping_button"
-        android:scaleType="fitXY"
-        android:onClick="sendMessage"
-        android:elevation="5dp"
-        android:layout_below="@+id/snack_button"
-        android:layout_alignStart="@+id/snack_button" />
-
 
 </RelativeLayout>

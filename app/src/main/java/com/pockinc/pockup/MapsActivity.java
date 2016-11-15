@@ -45,6 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<HashMap<String, Double>> placeCoord;
     public final static String EXTRA_MESSAGE = "com.pockinc.pockup.MESSAGE";
     private GoogleMap mMap;
+    public int category_id;
     //Intent intent = getIntent();
     //int id = intent.getIntExtra("category_id",0);
     //private int category_id= id;
@@ -55,10 +56,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setTitle("Category Map");
         setContentView(R.layout.category_activity_maps);
 
+        Intent intent = getIntent();
+        category_id = intent.getIntExtra("category_id",0);
+
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(MapsActivity.this);
-        String url ="https://pockup.herokuapp.com/api/categories/1/places";
+        String url ="https://pockup.herokuapp.com/api/categories/" + category_id + "/places";
         placeList = new ArrayList<>();
         placeCoord = new ArrayList<>();
 
@@ -74,7 +78,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             for (int i = 0; i < places.length(); i++) {
                                 JSONObject c = places.getJSONObject(i);
 
-                                String place_id = c.getString("id"); //c.getInt
+                                String place_id = String.valueOf(c.getInt("id")); //c.getInt
                                 String name = c.getString("name");
                                 double lat = c.getDouble("lat");
                                 double longitud = c.getDouble("long");
@@ -117,6 +121,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+
+        if(placeList.size() != 0)
+        {
+            double lat=0,longitud=0;
+            lat = placeCoord.get(1).get("lat");
+            longitud = placeCoord.get(1).get("long");
+            //Add a marker in Sydney and move the camera
+            LatLng ensenada = new LatLng(lat,longitud );  // Gimnasio 31.866743 , -116.596371
+            mMap.addMarker(new MarkerOptions().position(ensenada).title("Marker in" ));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(ensenada));
+        }
+
+
+
 
 
 
@@ -189,12 +207,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //Retrieving data from the hashmap
         double lat=0,longitud=0;
-        //lat = placeCoord.get(0).get("lat");
-        //longitud = placeCoord.get(0).get("long");
+        //lat = placeCoord.get(1).get("lat");
+        //longitud = placeCoord.get(1).get("long");
         //Add a marker in Sydney and move the camera
-        LatLng ensenada = new LatLng(lat,longitud );  // Gimnasio 31.866743 , -116.596371
-        mMap.addMarker(new MarkerOptions().position(ensenada).title("Marker in" ));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(ensenada));
+        //LatLng ensenada = new LatLng(lat,longitud );  // Gimnasio 31.866743 , -116.596371
+        //mMap.addMarker(new MarkerOptions().position(ensenada).title("Marker in" ));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ensenada));
 
 
 
@@ -219,10 +237,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Snackbar.make(view, getResources().getResourceName(view.getId()), Snackbar.LENGTH_LONG)
         //        .setAction("Action", null).show();
         Intent intent = new Intent(MapsActivity.this, GroupActivity.class);
+        intent.putExtra("category_id",category_id);
+        startActivity(intent);
+    }
+
+    public void openEventList(View view) {
+        //Snackbar.make(view, getResources().getResourceName(view.getId()), Snackbar.LENGTH_LONG);
 
 
-
-        //intent.putExtra(EXTRA_MESSAGE,category_id);
+        //Snackbar.make(view, getResources().getResourceName(view.getId()), Snackbar.LENGTH_LONG)
+        //        .setAction("Action", null).show();
+        Intent intent = new Intent(MapsActivity.this, EventActivity.class);
+        intent.putExtra("category_id",category_id);
         startActivity(intent);
     }
 

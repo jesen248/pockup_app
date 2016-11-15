@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -12,41 +13,58 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:theme="?attr/actionBarTheme"
-        android:minHeight="?attr/actionBarSize"
-        android:id="@+id/toolbar2"/>
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbar2"/>
 
     </android.support.design.widget.AppBarLayout>
 
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="335dp"
-        tools:context="com.pockinc.pockup.MapsActivity"
-        android:layout_weight="0.51" />
+        android:layout_height="351dp"
+        tools:context="com.pockinc.pockup.MapsActivity" />
 
-    <ImageButton
-        android:layout_height="100dip"
-        android:layout_width="100dip"
-        android:src="@drawable/ic_groups_button"
-        android:id="@+id/groupsButton"
-        android:scaleType="fitXY"
-        android:layout_below="@+id/map"
-        android:layout_alignStart="@+id/map"
-        android:elevation="5dp"
-        android:cropToPadding="true"
-        android:adjustViewBounds="true"
-        android:onClick="openGroupList"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ImageButton
+            android:layout_height="100dip"
+            android:layout_width="100dip"
+            android:src="@drawable/ic_groups_button"
+            android:id="@+id/groupsButton"
+            android:scaleType="fitXY"
+            android:elevation="5dp"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
+            android:onClick="openGroupList"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="51dp" />
+
+        <ImageButton
+            android:layout_height="100dip"
+            android:layout_width="100dip"
+            android:src="@drawable/ic_event_button"
+            android:id="@+id/eventsButton"
+            android:scaleType="fitCenter"
+            android:elevation="5dp"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
+            android:onClick="openEventList"
+            android:layout_weight="1"
+            android:layout_marginEnd="51dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
 
 </LinearLayout>

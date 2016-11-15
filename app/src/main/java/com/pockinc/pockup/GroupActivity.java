@@ -81,7 +81,7 @@ public class GroupActivity extends AppCompatActivity {
         String message = String.valueOf(id);
         //int id = Integer.parseInt(message);
 
-        url = "https://pockup.herokuapp.com/api/categories/" + message + "/groups";
+        url = "https://pockup.herokuapp.com/api/categories/" + id + "/groups";
 
 
         groupList = new ArrayList<>();
@@ -124,8 +124,6 @@ public class GroupActivity extends AppCompatActivity {
                     JSONArray groups = new JSONArray(jsonStr);
 
                     // sustitui contatcs con groups
-
-
 
                     // looping through All groups
                     for (int i = 0; i < groups.length(); i++) {

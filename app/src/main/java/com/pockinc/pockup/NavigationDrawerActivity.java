@@ -24,7 +24,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +107,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         //Snackbar.make(view, getResources().getResourceName(view.getId()), Snackbar.LENGTH_LONG)
         //        .setAction("Action", null).show();
-        Intent intent = new Intent(NavigationDrawerActivity.this, MapsActivity.class);
+
 
         //int category_id  = 1;
         int category_id = view.getId();
@@ -119,7 +119,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         } else if(category_id == R.id.snack_button){
             id = 3;
         }
-
+        Intent intent = new Intent(NavigationDrawerActivity.this, MapsActivity.class);
         //String message = String.valueOf(id);
         intent.putExtra("category_id",id);
         startActivity(intent);
