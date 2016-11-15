@@ -107,6 +107,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 placeList.add(place);
                                 placeCoord.add(coord);
                             }
+
+                            if(placeList.size() != 0)
+                            {
+                                double lat=0,longitud=0;
+                                int i = 0;
+                                for (HashMap<String, Double> map : placeCoord) {
+                                    lat = map.get("lat");
+                                    longitud = map.get("long");
+                                    //Add a marker in Sydney and move the camera
+                                    LatLng ensenada = new LatLng(lat,longitud );  // Gimnasio 31.866743 , -116.596371
+                                    mMap.addMarker(new MarkerOptions().position(ensenada).title("Marker in "+ placeList.get(i).get("name")));
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ensenada));
+                                    i++;
+                                }
+
+
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -122,16 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
-        if(placeList.size() != 0)
-        {
-            double lat=0,longitud=0;
-            lat = placeCoord.get(1).get("lat");
-            longitud = placeCoord.get(1).get("long");
-            //Add a marker in Sydney and move the camera
-            LatLng ensenada = new LatLng(lat,longitud );  // Gimnasio 31.866743 , -116.596371
-            mMap.addMarker(new MarkerOptions().position(ensenada).title("Marker in" ));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(ensenada));
-        }
+
 
 
 
@@ -224,6 +232,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             // Show rationale and request permission.
             mMap.setMyLocationEnabled(false);
+        }
+
+        if(placeCoord.size() != 0){
+            lat = placeCoord.get(0).get("lat");
+            longitud = placeCoord.get(0).get("long");
+            LatLng ensenada = new LatLng(lat,longitud );
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(ensenada));
         }
 
 
