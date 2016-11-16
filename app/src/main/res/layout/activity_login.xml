@@ -12,7 +12,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
         <EditText
             android:id="@+id/etUsername"
@@ -53,6 +54,14 @@
             android:text="Register"
             android:layout_centerHorizontal="false"
             android:textAlignment="center" />
+
+        <Button
+            android:text="On development"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:layout_weight="0.81"
+            android:onClick="onDevelop"/>
 
     </LinearLayout>
 

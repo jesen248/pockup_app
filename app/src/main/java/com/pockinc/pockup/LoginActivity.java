@@ -108,4 +108,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+    public void onDevelop(View view){
+        Intent intent = new Intent(LoginActivity.this, NavigationDrawerActivity.class);
+        intent.putExtra("user_id", 1);
+        startActivity(intent);
+    }
+
+
+
 }
